@@ -5,6 +5,7 @@ Business question: Given limited collection capacity, where is portfolio risk co
 A collections analytics project on a simulated NBFC-style loan portfolio — 5,000 loans, 60,000 monthly performance records — analyzed with PostgreSQL (window functions, CTEs) and visualized in Power BI and an interactive HTML dashboard.
 
 View the live dashboard https://kavyasudha1104-debug.github.io/collections-portfolio-analytics/dashboard.html
+
 Key findings
 Roll rates reveal the intervention window: 29.6% of accounts in the 1–30 DPD bucket roll into 31–60 DPD the next month, while 48.9% cure back to current — early-bucket contact has the highest save probability.
 Cure rate decays as the book seasons: monthly cure rate fell from 50.0% to 27.4% over the year, signalling rising hard-core delinquency.

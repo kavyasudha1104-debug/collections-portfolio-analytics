@@ -1,0 +1,41 @@
+loan_id,risk_grade,state,status,dpd,outstanding_balance,priority_in_bucket
+L02907,D,Kerala,dpd_1_30,3,840337,1
+L00699,C,Gujarat,dpd_1_30,15,801678,2
+L02747,B,Kerala,dpd_1_30,23,790484,3
+L03133,C,West Bengal,dpd_1_30,19,786347,4
+L02776,B,Telangana,dpd_1_30,29,767870,5
+L00552,E,Kerala,dpd_1_30,15,767451,6
+L04908,D,Rajasthan,dpd_1_30,27,753911,7
+L02170,B,Gujarat,dpd_1_30,10,753263,8
+L03927,D,Kerala,dpd_1_30,19,745041,9
+L00653,D,West Bengal,dpd_1_30,18,740602,10
+L03690,A,Gujarat,dpd_1_30,26,739138,11
+L04301,D,Karnataka,dpd_1_30,30,736369,12
+L02283,C,Rajasthan,dpd_1_30,28,735367,13
+L01222,A,Gujarat,dpd_1_30,9,732109,14
+L02086,D,Gujarat,dpd_1_30,5,701932,15
+L00011,D,West Bengal,dpd_1_30,26,697850,16
+L03267,A,Maharashtra,dpd_1_30,23,692300,17
+L01096,A,Tamil Nadu,dpd_1_30,21,690336,18
+L04967,B,Tamil Nadu,dpd_1_30,7,676028,19
+L00936,B,Kerala,dpd_1_30,3,675382,20
+L00649,A,Kerala,dpd_31_60,53,895865,1
+L01035,C,Karnataka,dpd_31_60,40,862629,2
+L03888,E,Maharashtra,dpd_31_60,44,828998,3
+L04644,E,Delhi,dpd_31_60,38,800631,4
+L04594,B,Kerala,dpd_31_60,42,784221,5
+L00119,E,Delhi,dpd_31_60,59,778540,6
+L01072,B,Kerala,dpd_31_60,40,773461,7
+L03554,C,West Bengal,dpd_31_60,57,714394,8
+L00287,D,Kerala,dpd_31_60,34,683796,9
+L00821,A,Rajasthan,dpd_31_60,31,654731,10
+L02210,D,Kerala,dpd_31_60,49,639857,11
+L00158,D,Karnataka,dpd_31_60,48,634131,12
+L03518,B,Telangana,dpd_31_60,45,614642,13
+L00903,C,Tamil Nadu,dpd_31_60,38,614543,14
+L00919,D,West Bengal,dpd_31_60,35,593302,15
+L02547,B,Maharashtra,dpd_31_60,57,589576,16
+L02872,B,Telangana,dpd_31_60,45,571510,17
+L00813,C,Kerala,dpd_31_60,45,570074,18
+L04910,E,West Bengal,dpd_31_60,51,547523,19
+L02488,D,Gujarat,dpd_31_60,41,546910,20

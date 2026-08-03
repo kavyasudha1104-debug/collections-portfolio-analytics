@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Collections Portfolio Analytics</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+ body{font-family:Segoe UI,Arial,sans-serif;margin:0;background:#f4f5f7;color:#222}
+ header{background:#15315b;color:#fff;padding:18px 28px}
+ header h1{margin:0;font-size:22px} header p{margin:4px 0 0;opacity:.85;font-size:13px}
+ .kpis{display:flex;gap:14px;padding:18px 28px 0;flex-wrap:wrap}
+ .kpi{background:#fff;border-radius:10px;padding:14px 20px;flex:1;min-width:170px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+ .kpi .v{font-size:26px;font-weight:700;color:#15315b} .kpi .l{font-size:12px;color:#666;margin-top:2px}
+ .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:18px 28px 28px}
+ .card{background:#fff;border-radius:10px;padding:16px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+ .card h3{margin:0 0 10px;font-size:15px;color:#15315b}
+ table{border-collapse:collapse;width:100%;font-size:12px}
+ th,td{padding:6px 8px;border:1px solid #e3e6ea;text-align:center}
+ thead th{background:#15315b;color:#fff} tbody th{background:#eef1f5;text-align:left}
+ td.empty{color:#bbb}
+ @media(max-width:900px){.grid{grid-template-columns:1fr}}
+</style></head><body>
+<header><h1>Collections Portfolio Analytics Dashboard</h1>
+<p>5,000-loan NBFC-style portfolio &middot; 12 months of performance &middot; SQL (PostgreSQL) analysis &middot; latest month: 2025-12</p></header>
+<div class="kpis">
+ <div class="kpi"><div class="v">&#8377;97.5 Cr</div><div class="l">Outstanding book (latest month)</div></div>
+ <div class="kpi"><div class="v">15.2%</div><div class="l">Delinquency rate (1&ndash;90+ DPD)</div></div>
+ <div class="kpi"><div class="v">27.4%</div><div class="l">Cure rate (latest month)</div></div>
+ <div class="kpi"><div class="v">17.7%</div><div class="l">Recovery rate on charge-offs</div></div>
+</div>
+<div class="grid">
+ <div class="card"><h3>Portfolio Ageing &mdash; DPD bucket mix over time</h3><canvas id="ageing"></canvas></div>
+ <div class="card"><h3>Cure Rate Trend</h3><canvas id="cure"></canvas></div>
+ <div class="card"><h3>Roll-Rate Matrix (from &darr; / to &rarr;, % month-over-month)</h3>
+   <table><thead><tr><th></th><th>Current</th><th>1-30 DPD</th><th>31-60 DPD</th><th>61-90 DPD</th><th>90+ DPD</th><th>Charged Off</th></tr></thead>
+   <tbody><tr><th>Current</th><td style='background:rgba(198,40,40,0.93);color:#fff'>93.1%</td><td style='background:rgba(198,40,40,0.07);color:#222'>6.9%</td><td class='empty'>–</td><td class='empty'>–</td><td class='empty'>–</td><td class='empty'>–</td></tr><tr><th>1-30 DPD</th><td style='background:rgba(198,40,40,0.49);color:#222'>48.9%</td><td style='background:rgba(198,40,40,0.22);color:#222'>21.5%</td><td style='background:rgba(198,40,40,0.30);color:#222'>29.6%</td><td class='empty'>–</td><td class='empty'>–</td><td class='empty'>–</td></tr><tr><th>31-60 DPD</th><td style='background:rgba(198,40,40,0.16);color:#222'>15.6%</td><td style='background:rgba(198,40,40,0.12);color:#222'>11.7%</td><td style='background:rgba(198,40,40,0.20);color:#222'>20.0%</td><td style='background:rgba(198,40,40,0.53);color:#222'>52.7%</td><td class='empty'>–</td><td class='empty'>–</td></tr><tr><th>61-90 DPD</th><td style='background:rgba(198,40,40,0.07);color:#222'>6.9%</td><td style='background:rgba(198,40,40,0.03);color:#222'>3.2%</td><td style='background:rgba(198,40,40,0.08);color:#222'>8.4%</td><td style='background:rgba(198,40,40,0.19);color:#222'>18.8%</td><td style='background:rgba(198,40,40,0.63);color:#fff'>62.8%</td><td class='empty'>–</td></tr><tr><th>90+ DPD</th><td style='background:rgba(198,40,40,0.02);color:#222'>1.7%</td><td style='background:rgba(198,40,40,0.01);color:#222'>1.3%</td><td style='background:rgba(198,40,40,0.02);color:#222'>2.3%</td><td style='background:rgba(198,40,40,0.06);color:#222'>5.7%</td><td style='background:rgba(198,40,40,0.51);color:#222'>51.2%</td><td style='background:rgba(198,40,40,0.38);color:#222'>37.8%</td></tr><tr><th>Charged Off</th><td class='empty'>–</td><td class='empty'>–</td><td class='empty'>–</td><td class='empty'>–</td><td class='empty'>–</td><td style='background:rgba(198,40,40,1.00);color:#fff'>100.0%</td></tr></tbody></table></div>
+ <div class="card"><h3>Delinquency &amp; Charge-off by Risk Grade</h3><canvas id="grade"></canvas></div>
+ <div class="card" style="grid-column:1/-1"><h3>Collection Priority List &mdash; top early-bucket accounts by balance at risk</h3>
+   <table><thead><tr><th>Loan</th><th>Grade</th><th>State</th><th>Bucket</th><th>DPD</th><th>Outstanding</th></tr></thead>
+   <tbody><tr><td>L02907</td><td>D</td><td>Kerala</td><td>1-30 DPD</td><td>3</td><td style='text-align:right'>₹840,337</td></tr><tr><td>L00699</td><td>C</td><td>Gujarat</td><td>1-30 DPD</td><td>15</td><td style='text-align:right'>₹801,678</td></tr><tr><td>L02747</td><td>B</td><td>Kerala</td><td>1-30 DPD</td><td>23</td><td style='text-align:right'>₹790,484</td></tr><tr><td>L03133</td><td>C</td><td>West Bengal</td><td>1-30 DPD</td><td>19</td><td style='text-align:right'>₹786,347</td></tr><tr><td>L02776</td><td>B</td><td>Telangana</td><td>1-30 DPD</td><td>29</td><td style='text-align:right'>₹767,870</td></tr><tr><td>L00552</td><td>E</td><td>Kerala</td><td>1-30 DPD</td><td>15</td><td style='text-align:right'>₹767,451</td></tr><tr><td>L04908</td><td>D</td><td>Rajasthan</td><td>1-30 DPD</td><td>27</td><td style='text-align:right'>₹753,911</td></tr><tr><td>L02170</td><td>B</td><td>Gujarat</td><td>1-30 DPD</td><td>10</td><td style='text-align:right'>₹753,263</td></tr><tr><td>L03927</td><td>D</td><td>Kerala</td><td>1-30 DPD</td><td>19</td><td style='text-align:right'>₹745,041</td></tr><tr><td>L00653</td><td>D</td><td>West Bengal</td><td>1-30 DPD</td><td>18</td><td style='text-align:right'>₹740,602</td></tr><tr><td>L03690</td><td>A</td><td>Gujarat</td><td>1-30 DPD</td><td>26</td><td style='text-align:right'>₹739,138</td></tr><tr><td>L04301</td><td>D</td><td>Karnataka</td><td>1-30 DPD</td><td>30</td><td style='text-align:right'>₹736,369</td></tr><tr><td>L02283</td><td>C</td><td>Rajasthan</td><td>1-30 DPD</td><td>28</td><td style='text-align:right'>₹735,367</td></tr><tr><td>L01222</td><td>A</td><td>Gujarat</td><td>1-30 DPD</td><td>9</td><td style='text-align:right'>₹732,109</td></tr><tr><td>L02086</td><td>D</td><td>Gujarat</td><td>1-30 DPD</td><td>5</td><td style='text-align:right'>₹701,932</td></tr></tbody></table></div>
+</div>
+<script>
+const months=["2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12"];
+new Chart(document.getElementById('ageing'),{type:'bar',
+ data:{labels:months,datasets:[{label:'Current',data:[92.76, 89.66, 87.28, 85.9, 84.88, 84.08, 82.52, 81.58, 79.72, 79.24, 78.36, 77.92],backgroundColor:'#2e7d32'},{label:'1-30 DPD',data:[7.24, 8.22, 8.6, 8.34, 7.88, 7.7, 7.88, 7.46, 8.22, 7.42, 7.8, 7.28],backgroundColor:'#fbc02d'},{label:'31-60 DPD',data:[0.0, 2.12, 3.02, 3.28, 3.36, 2.98, 3.1, 3.4, 3.42, 3.48, 2.8, 2.92],backgroundColor:'#f57c00'},{label:'61-90 DPD',data:[0.0, 0.0, 1.1, 1.8, 2.1, 2.38, 2.44, 2.3, 2.12, 2.24, 2.42, 2.02],backgroundColor:'#e64a19'},{label:'90+ DPD',data:[0.0, 0.0, 0.0, 0.68, 1.52, 2.06, 2.34, 2.72, 3.06, 2.92, 2.82, 3.02],backgroundColor:'#c62828'},{label:'Charged Off',data:[0.0, 0.0, 0.0, 0.0, 0.26, 0.8, 1.72, 2.54, 3.46, 4.7, 5.8, 6.84],backgroundColor:'#4a148c'}]},
+ options:{responsive:true,scales:{x:{stacked:true},y:{stacked:true,max:100,title:{display:true,text:'% of book'}}}}});
+new Chart(document.getElementById('cure'),{type:'line',
+ data:{labels:["2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11"],
+  datasets:[{label:'Cure rate %',data:[50.0, 38.3, 37.74, 34.18, 32.71, 28.44, 29.95, 26.83, 27.59, 28.02, 27.4],
+   borderColor:'#1565c0',backgroundColor:'rgba(21,101,192,.12)',fill:true,tension:.25}]},
+ options:{responsive:true,scales:{y:{title:{display:true,text:'%'}}}}});
+new Chart(document.getElementById('grade'),{type:'bar',
+ data:{labels:["A", "B", "C", "D", "E"],
+  datasets:[
+   {label:'Delinquency %',data:[7.7, 12.54, 18.83, 26.4, 24.93],backgroundColor:'#f57c00'},
+   {label:'Charge-off %',data:[1.03, 2.97, 8.99, 15.36, 23.27],backgroundColor:'#c62828'}]},
+ options:{responsive:true,scales:{y:{title:{display:true,text:'% of accounts'}}}}});
+</script></body></html>
